@@ -22,17 +22,17 @@ namespace Likha_Art_Gallery
         }
 
         //Earl
-        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 
         //Mab
         //public static SqlConnection con = new SqlConnection();
-        
+
         //Miggy
 
-        
-        //Keans
 
-        
+        //Keans
+        public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True");
+
         //Jolo
 
 

@@ -31,11 +31,11 @@ namespace Likha_Art_Gallery
 
 
         //Keans
-        public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True");
 
 
         //Jolo
-        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 
         private String imageLocation = null;
         byte[] photo;

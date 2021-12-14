@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Likha_Art_Gallery
 {
@@ -18,6 +19,20 @@ namespace Likha_Art_Gallery
         {
             InitializeComponent();
         }
+
+        //Earl
+        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+
+        //Mab
+        //public static SqlConnection con = new SqlConnection();
+        
+        //Miggy
+
+        
+        //Keans
+
+        
+        //Jolo
 
         private void Login_Register_Load(object sender, EventArgs e)
         {
@@ -58,6 +73,26 @@ namespace Likha_Art_Gallery
         private void link_login_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             btn_login_panel.PerformClick();
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            String imageLocation;
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png| All Files(*.*)|*.*";
+
+                if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    imageLocation = dialog.FileName;
+                    pictureBox1.ImageLocation = imageLocation;
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error in uploading image file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

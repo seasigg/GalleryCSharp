@@ -282,6 +282,7 @@ namespace Likha_Art_Gallery
             this.btn_register.TabIndex = 4;
             this.btn_register.Text = "Register";
             this.btn_register.UseVisualStyleBackColor = false;
+            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
             // txt_username_register
             // 
@@ -326,6 +327,7 @@ namespace Likha_Art_Gallery
             this.btn_login.TabIndex = 3;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // txt_password_login
             // 
@@ -407,8 +409,8 @@ namespace Likha_Art_Gallery
             this.Controls.Add(this.panel_login_bar);
             this.Controls.Add(this.btn_register_panel);
             this.Controls.Add(this.btn_login_panel);
-            this.Controls.Add(this.panel_register);
             this.Controls.Add(this.panel_login);
+            this.Controls.Add(this.panel_register);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

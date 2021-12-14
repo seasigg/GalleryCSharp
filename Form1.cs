@@ -34,6 +34,9 @@ namespace Likha_Art_Gallery
         
         //Jolo
 
+
+        private String imageLocation = null;
+
         private void Login_Register_Load(object sender, EventArgs e)
         {
             btn_login_panel.PerformClick();
@@ -77,7 +80,6 @@ namespace Likha_Art_Gallery
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            String imageLocation;
             try
             {
                 OpenFileDialog dialog = new OpenFileDialog();
@@ -93,6 +95,72 @@ namespace Likha_Art_Gallery
             {
                 MessageBox.Show("Error in uploading image file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_register_Click(object sender, EventArgs e)
+        {
+            if (emptyChecker())
+            {
+                if(accTypeChecker())
+                {
+                    if(passCheck())
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private Boolean emptyChecker()
+        {
+            Boolean t = false;
+            if (txt_username_register.TextLength == 0 || txt_password_register.TextLength == 0 ||
+                txt_confirmpass.TextLength == 0 || txt_fname.TextLength == 0 ||
+                txt_lname.TextLength == 0 || imageLocation == null)
+            {
+                MessageBox.Show("Please Input All Required Fields");
+            }
+            else
+                t = true;
+            return t;
+        }
+
+        private Boolean accTypeChecker()
+        {
+            Boolean t = false;
+            if (radio_artist.Checked || radio_visitor.Checked)
+                t = true;
+            else
+                MessageBox.Show("Please Choose Account Type");
+            return t;
+        }
+
+        private Boolean passCheck()
+        {
+            Boolean t = false;
+            if (txt_password_register == txt_confirmpass)
+                t = true;
+            else
+                MessageBox.Show("Passwords are not the same");
+            return t;
+        }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            if(emptyCheckerLogin())
+            {
+
+            }
+        }
+
+        private Boolean emptyCheckerLogin()
+        {
+            Boolean t = false;
+            if (txt_username_login.TextLength == 0 || txt_password_login.TextLength == 0)
+                MessageBox.Show("Please Fill up All Fields");
+            else
+                t = true;
+            return t;
         }
     }
 }

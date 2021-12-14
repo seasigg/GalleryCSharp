@@ -41,6 +41,10 @@ namespace Likha_Art_Gallery
         SqlCommand cmd;
         private String accType;
 
+        public static int currentUserID;
+        public static String currentUsername;
+        public static String currentType;
+
         private void Login_Register_Load(object sender, EventArgs e)
         {
             btn_login_panel.PerformClick();
@@ -176,7 +180,10 @@ namespace Likha_Art_Gallery
         {
             if(emptyCheckerLogin())
             {
-
+                if(credentialsCheck())
+                {
+                    login();
+                }
             }
         }
 
@@ -201,6 +208,60 @@ namespace Likha_Art_Gallery
             stream.Close();
 
             return photo;
+        }
+
+        private Boolean credentialsCheck()
+        {
+            con.Open();
+
+            String u = txt_username_login.Text;
+            String p = txt_password_login.Text;
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM registration WHERE username = '" + u + "' AND password = '" + p + "'", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+
+            if (dt.Rows.Count == 1)
+            {
+                SqlDataReader r;
+                con.Open();
+                cmd = new SqlCommand("SELECT * FROM registration WHERE username = '" + u + "' AND password = '" + p + "'", con);
+                r = cmd.ExecuteReader();
+                
+                if (r.Read())
+                {
+                    currentUserID = Convert.ToInt32(r["user_id"]);
+                    currentUsername = r["username"].ToString();
+                    currentType = r["user_type"].ToString();
+
+                }
+                con.Close();
+                MessageBox.Show("Successfully Logged In");
+                return true;
+            }
+
+            else
+            {
+                MessageBox.Show("Invalid Credentials");
+                return false;   
+            }
+        }
+
+        private void login()
+        {
+            if(currentType.Equals("artist"))
+            {
+                ArtistMM a = new ArtistMM();
+                a.Show();
+                this.Hide();
+            }
+            else
+            {
+                UserMM u = new UserMM();
+                u.Show();
+                this.Hide();
+            }
         }
     }
 }

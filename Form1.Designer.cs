@@ -290,6 +290,7 @@ namespace Likha_Art_Gallery
             this.link_login.TabIndex = 18;
             this.link_login.TabStop = true;
             this.link_login.Text = "Click here.";
+            this.link_login.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_login_LinkClicked);
             // 
             // panel_login
             // 

@@ -54,5 +54,10 @@ namespace Likha_Art_Gallery
             radio_artist.Checked = false;
             radio_visitor.Checked = false;
         }
+
+        private void link_login_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            btn_login_panel.PerformClick();
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Likha_Art_Gallery
 {
@@ -36,6 +37,9 @@ namespace Likha_Art_Gallery
 
 
         private String imageLocation = null;
+        byte[] photo;
+        SqlCommand cmd;
+        private String accType;
 
         private void Login_Register_Load(object sender, EventArgs e)
         {
@@ -105,7 +109,22 @@ namespace Likha_Art_Gallery
                 {
                     if(passCheck())
                     {
+                        photo = getPhoto(imageLocation);
 
+                        String un = txt_username_register.Text;
+                        String pa = txt_password_register.Text;
+                        String fn = txt_fname.Text;
+                        String ln = txt_lname.Text;
+
+                        con.Open();
+                        cmd = new SqlCommand("INSERT INTO registration VALUES ('" + un + "', '" + pa + "', '" + fn + "', '" + ln + "', '" + accType + "', '" + photo + "')", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        MessageBox.Show("Account Registered Successfully");
+
+                        clearAllFields();
+                        btn_login_panel.PerformClick();
                     }
                 }
             }
@@ -129,7 +148,14 @@ namespace Likha_Art_Gallery
         {
             Boolean t = false;
             if (radio_artist.Checked || radio_visitor.Checked)
+            {
                 t = true;
+                if (radio_artist.Checked)
+                    accType = "artist";
+                else
+                    accType = "user";
+            }
+                
             else
                 MessageBox.Show("Please Choose Account Type");
             return t;
@@ -138,12 +164,13 @@ namespace Likha_Art_Gallery
         private Boolean passCheck()
         {
             Boolean t = false;
-            if (txt_password_register == txt_confirmpass)
+            if (txt_password_register.Text == txt_confirmpass.Text)
                 t = true;
             else
                 MessageBox.Show("Passwords are not the same");
             return t;
         }
+
 
         private void btn_login_Click(object sender, EventArgs e)
         {
@@ -161,6 +188,19 @@ namespace Likha_Art_Gallery
             else
                 t = true;
             return t;
+        }
+
+        public static byte[] getPhoto(String path)
+        {
+            FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader reader = new BinaryReader(stream);
+
+            byte[] photo = reader.ReadBytes((int)stream.Length);
+
+            reader.Close();
+            stream.Close();
+
+            return photo;
         }
     }
 }

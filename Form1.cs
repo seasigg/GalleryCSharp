@@ -32,7 +32,7 @@ namespace Likha_Art_Gallery
 
         //Keans
 
-
+        
         //Jolo
         public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 

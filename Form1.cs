@@ -25,7 +25,7 @@ namespace Likha_Art_Gallery
         //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 
         //Mab
-        //public static SqlConnection con = new SqlConnection();
+        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAARK29\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 
         //Miggy
 
@@ -35,7 +35,7 @@ namespace Likha_Art_Gallery
 
 
         //Jolo
-        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
 
         private String imageLocation = null;
         byte[] photo;

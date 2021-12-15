@@ -22,20 +22,20 @@ namespace Likha_Art_Gallery
         }
 
         //Earl
-        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
         //Mab
-        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAARK29\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAARK29\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
         //Miggy
-
+        //public static SqlConnection con = new SqlConnection();
 
         //Keans
-        //public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
 
         //Jolo
-        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-UFRTTCN\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
         private String imageLocation = null;
         byte[] photo;
@@ -120,11 +120,16 @@ namespace Likha_Art_Gallery
                         String pa = txt_password_register.Text;
                         String fn = txt_fname.Text;
                         String ln = txt_lname.Text;
-
                         con.Open();
                         cmd = new SqlCommand("INSERT INTO registration VALUES ('" + un + "', '" + pa + "', '" + fn + "', '" + ln + "', '" + accType + "', '" + photo + "')", con);
                         cmd.ExecuteNonQuery();
+
                         con.Close();
+
+                        if (accType == "artist")
+                            registerAsArtist();
+                        else
+                            registerAsUser();
 
                         MessageBox.Show("Account Registered Successfully");
 
@@ -133,6 +138,42 @@ namespace Likha_Art_Gallery
                     }
                 }
             }
+        }
+
+        private void registerAsArtist()
+        {
+            con.Open();
+            SqlDataReader r;
+            String u = txt_username_register.Text;
+            String p = txt_password_register.Text;
+            cmd = new SqlCommand("SELECT * FROM registration WHERE username = '" + u + "' AND password = '" + p + "'", con);
+            r = cmd.ExecuteReader();
+            
+            if (r.Read())
+            {
+                int registerUserId = Convert.ToInt32(r["user_id"]);
+                SqlCommand cmd2 = new SqlCommand("INSERT into artist values('"+registerUserId+"', '', '')", con);
+                cmd2.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+
+        private void registerAsUser()
+        {
+            con.Open();
+            SqlDataReader r;
+            String u = txt_username_register.Text;
+            String p = txt_password_register.Text;
+            cmd = new SqlCommand("SELECT * FROM registration WHERE username = '" + u + "' AND password = '" + p + "'", con);
+            r = cmd.ExecuteReader();
+
+            if (r.Read())
+            {
+                int registerUserId = Convert.ToInt32(r["user_id"]);
+                cmd = new SqlCommand("INSERT into visitor values('" + registerUserId + "')", con);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
         }
 
         private Boolean emptyChecker()
@@ -175,7 +216,6 @@ namespace Likha_Art_Gallery
                 MessageBox.Show("Passwords are not the same");
             return t;
         }
-
 
         private void btn_login_Click(object sender, EventArgs e)
         {
@@ -235,8 +275,8 @@ namespace Likha_Art_Gallery
                     currentUserID = Convert.ToInt32(r["user_id"]);
                     currentUsername = r["username"].ToString();
                     currentType = r["user_type"].ToString();
-
                 }
+
                 con.Close();
                 MessageBox.Show("Successfully Logged In");
                 return true;

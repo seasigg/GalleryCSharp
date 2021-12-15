@@ -34,6 +34,9 @@ namespace Likha_Art_Gallery
             this.panel_login_bar = new System.Windows.Forms.Panel();
             this.panel_register_bar = new System.Windows.Forms.Panel();
             this.panel_register = new System.Windows.Forms.Panel();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txt_lname = new System.Windows.Forms.TextBox();
             this.txt_fname = new System.Windows.Forms.TextBox();
             this.link_login = new System.Windows.Forms.LinkLabel();
@@ -56,12 +59,9 @@ namespace Likha_Art_Gallery
             this.label9 = new System.Windows.Forms.Label();
             this.txt_username_login = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnUpload = new System.Windows.Forms.Button();
             this.panel_register.SuspendLayout();
-            this.panel_login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_login.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_login_panel
@@ -131,6 +131,37 @@ namespace Likha_Art_Gallery
             this.panel_register.Name = "panel_register";
             this.panel_register.Size = new System.Drawing.Size(1288, 586);
             this.panel_register.TabIndex = 9;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(1074, 362);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(92, 38);
+            this.btnUpload.TabIndex = 23;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(826, 81);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(340, 272);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(892, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(204, 37);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Profile Picture";
             // 
             // txt_lname
             // 
@@ -368,37 +399,6 @@ namespace Likha_Art_Gallery
             this.label10.TabIndex = 0;
             this.label10.Text = "Username:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(892, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(204, 37);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Profile Picture";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(826, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(340, 272);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpload.Location = new System.Drawing.Point(1074, 362);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(92, 38);
-            this.btnUpload.TabIndex = 23;
-            this.btnUpload.Text = "Upload";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            // 
             // Login_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,17 +409,17 @@ namespace Likha_Art_Gallery
             this.Controls.Add(this.panel_login_bar);
             this.Controls.Add(this.btn_register_panel);
             this.Controls.Add(this.btn_login_panel);
-            this.Controls.Add(this.panel_login);
             this.Controls.Add(this.panel_register);
+            this.Controls.Add(this.panel_login);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Login_Register_Load);
             this.panel_register.ResumeLayout(false);
             this.panel_register.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_login.ResumeLayout(false);
             this.panel_login.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

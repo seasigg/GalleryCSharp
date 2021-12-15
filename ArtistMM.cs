@@ -16,5 +16,12 @@ namespace Likha_Art_Gallery
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login_Register nf = new Login_Register();
+            nf.Show();
+            this.Hide();
+        }
     }
 }

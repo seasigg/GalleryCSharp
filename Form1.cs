@@ -25,13 +25,13 @@ namespace Likha_Art_Gallery
         //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-DD2OE5B\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
         //Mab
-        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAARK29\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
+        public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAARK29\\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
         //Miggy
         //public static SqlConnection con = new SqlConnection();
 
         //Keans
-        public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
+        //public static SqlConnection con = new SqlConnection("Data Source=LAPTOP-G7NJA4BE;Initial Catalog=gallery;Integrated Security=True;MultipleActiveResultSets=true");
 
 
         //Jolo
@@ -152,8 +152,8 @@ namespace Likha_Art_Gallery
             if (r.Read())
             {
                 int registerUserId = Convert.ToInt32(r["user_id"]);
-                SqlCommand cmd2 = new SqlCommand("INSERT into artist values('"+registerUserId+"', '', '')", con);
-                cmd2.ExecuteNonQuery();
+                cmd = new SqlCommand("INSERT into artist values('"+registerUserId+"', '', '')", con);
+                cmd.ExecuteNonQuery();
             }
             con.Close();
         }
